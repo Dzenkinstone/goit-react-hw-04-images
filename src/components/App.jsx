@@ -87,7 +87,6 @@ export const App = () => {
 
   return (
     <Container>
-      {console.log(images)}
       <Searchbar isLoading={isLoading} onChange={handleInputSubmit} />
       <Toaster />
       <ImageGallery images={makeOptions} onShow={handleCLick} />
