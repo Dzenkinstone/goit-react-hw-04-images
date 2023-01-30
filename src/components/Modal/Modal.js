@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { Overlay } from './Modal.styled';
 import { OpenModal } from './Modal.styled';
 
