@@ -78,9 +78,12 @@ export const App = () => {
     setSelectedImage(value);
   };
 
-  const handleKeyDown = ({ code }) => {
-    console.log(code);
-    if (code === 'Escape') {
+  const handleKeyDown = () => {
+    return setShowModal(prevState => !prevState);
+  };
+
+  const handleClick = event => {
+    if (event.currentTarget === event.target) {
       return setShowModal(prevState => !prevState);
     }
   };
@@ -90,7 +93,13 @@ export const App = () => {
       <Searchbar isLoading={isLoading} onChange={handleInputSubmit} />
       <Toaster />
       <ImageGallery images={makeOptions} onShow={handleCLick} />
-      {showModal && <Modal onKeyDown={handleKeyDown} url={selectedImage} />}
+      {showModal && (
+        <Modal
+          onKeyDown={handleKeyDown}
+          url={selectedImage}
+          handleClick={handleClick}
+        />
+      )}
       {showButton && <Button onChange={loadMore} />}
     </Container>
   );

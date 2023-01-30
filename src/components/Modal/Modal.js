@@ -1,17 +1,24 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Overlay } from './Modal.styled';
 import { OpenModal } from './Modal.styled';
 
-export const Modal = ({ url, onKeyDown }) => {
+export const Modal = ({ url, onKeyDown, handleClick }) => {
   useEffect(() => {
-    window.addEventListener('keydown', onKeyDown);
+    const checkKey = ({ code }) => {
+      if (code === 'Escape') {
+        return onKeyDown();
+      }
+      handleClick();
+    };
 
-    return () => window.removeEventListener('keydown', onKeyDown);
-  });
+    window.addEventListener('keydown', checkKey);
+
+    return () => window.removeEventListener('keydown', checkKey);
+  }, [onKeyDown, handleClick]);
 
   return (
-    <Overlay>
+    <Overlay onClick={handleClick}>
       <OpenModal>
         <img src={`${url}`} alt="" />
       </OpenModal>
@@ -22,4 +29,5 @@ export const Modal = ({ url, onKeyDown }) => {
 Modal.propTypes = {
   url: PropTypes.string.isRequired,
   onKeyDown: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };

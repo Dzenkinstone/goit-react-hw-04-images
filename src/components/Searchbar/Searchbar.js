@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { BsSearch } from 'react-icons/bs';
 import { useState } from 'react';
 import { Loader } from '../Loader';
 import { Header } from './Searchbar.styled';
@@ -26,6 +27,7 @@ export const Searchbar = ({ onChange, isLoading }) => {
     <Header>
       <Form onSubmit={handleSubmit}>
         <Button type="submit">
+          <BsSearch size="16px" />
           <Label>Search</Label>
         </Button>
         <Input
