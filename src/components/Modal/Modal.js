@@ -20,7 +20,7 @@ export const Modal = ({ url, onKeyDown, handleClick }) => {
   return (
     <Overlay onClick={handleClick}>
       <OpenModal>
-        <img src={`${url}`} alt="" />
+        <img width="1000px" src={`${url}`} alt="" />
       </OpenModal>
     </Overlay>
   );
