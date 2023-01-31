@@ -82,24 +82,12 @@ export const App = () => {
     return setShowModal(prevState => !prevState);
   };
 
-  const handleClick = event => {
-    if (event.currentTarget === event.target) {
-      return setShowModal(prevState => !prevState);
-    }
-  };
-
   return (
     <Container>
       <Searchbar isLoading={isLoading} onChange={handleInputSubmit} />
       <Toaster />
       <ImageGallery images={makeOptions} onShow={handleCLick} />
-      {showModal && (
-        <Modal
-          onKeyDown={handleKeyDown}
-          url={selectedImage}
-          handleClick={handleClick}
-        />
-      )}
+      {showModal && <Modal onKeyDown={handleKeyDown} url={selectedImage} />}
       {showButton && <Button onChange={loadMore} />}
     </Container>
   );
