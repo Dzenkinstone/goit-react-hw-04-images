@@ -37,6 +37,7 @@ export const App = () => {
         const updatedImages = images.hits;
 
         if (images.totalHits === 0) {
+          setShowButton(page < Math.ceil(images.totalHits / 12));
           return toast('Oops, there are no pictures with this name', {
             duration: 2000,
             style: { color: 'red' },
